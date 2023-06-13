@@ -1,0 +1,26 @@
+{
+  "name": "react-TescoSystem",
+  "private": true,
+  "homepage": "https://brandonR16.github.io/react-TescoSystem",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.2.0"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "3.1.0",
+    "firebase": "^9.20.0",
+    "gh-pages": "^5.0.0",
+    "react": "18.2.0",
+    "react-datepicker": "^4.11.0",
+    "react-dom": "18.2.0",
+    "react-router-dom": "6.10.0"
+  }
+}
