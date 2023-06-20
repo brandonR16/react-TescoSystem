@@ -1,10 +1,10 @@
-import { IconPadlocked } from "../svg/IconPadlocked";
+import { Alert } from "../svg/Alert";
 
 const BadCredentials = () => {
   return (
     <div className="containerMessage-wrongCredentials">
-      <IconPadlocked />
-      Las credenciales no coinciden
+      <Alert />
+      No existe el usuario
     </div>
   );
 };

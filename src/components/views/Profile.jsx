@@ -1,11 +1,9 @@
 import { getAuth, signOut } from 'firebase/auth';
 import { firebaseApp } from "../../credentials";
 import { Link } from "react-router-dom";
-import AppearanceCl from "../../functions/Appearance";
 
 export function Profile() {
   const auth = getAuth(firebaseApp);
-  const classAppearance = new AppearanceCl();
 
   return (
     <section className="container-profile">
@@ -25,7 +23,6 @@ export function Profile() {
         to='/sigma/'
         className="profile-btn profile-btnRed"
         onClick={() => {
-          classAppearance._makeLight();
           signOut(auth);
         }}>
         Cerrar Sesión

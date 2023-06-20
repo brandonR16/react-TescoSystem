@@ -1,6 +1,7 @@
 import './App.css';
 import { Sign } from "./src/components/pages/Sign";
 import { Home } from "./src/components/pages/Home";
+import { Inicio } from "./src/components/temp/Inicio";
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
 import { firebaseApp } from './src/credentials';
 import { useState } from "react";
@@ -16,4 +17,5 @@ export default function App() {
   });
 
   return <>{globalUser ? <Home userMail={globalUser.email} /> : <Sign />}</>;
+  // return <Inicio />;
 };

@@ -2,6 +2,7 @@ import BadCredentials from "../messages/BadCredentials";
 import { firebaseApp } from '../../credentials';
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword, signInWithRedirect, GoogleAuthProvider } from 'firebase/auth';
+import { Link } from "react-router-dom";
 
 const auth = getAuth(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
@@ -53,7 +54,7 @@ export function SignIn({ setIsRegistering }) {
           placeholder="Ingresa tu contraseña"
         />
 
-        <button className="login-buttonLogin" type="submit">Entrar</button>
+        <button className="login-buttonLogin">Entrar </button>
 
         {/* <button
           className="login-buttonLoginGoogle"
@@ -64,7 +65,7 @@ export function SignIn({ setIsRegistering }) {
         Entrar con Google
        </button> */}
 
-        <label className="login-labelBGR" htmlFor="lbgr">¿No tienes una cuenta? <button onClick={goRegister} className="login-buttonGoRegister" id="lbgr">Registrate</button></label>
+        <button onClick={goRegister} className="login-buttonGoRegister" id="lbgr">Registrate</button>
       </form>
     </section >
   );
