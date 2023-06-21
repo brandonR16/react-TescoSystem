@@ -11,7 +11,7 @@ export function Inicio() {
     <section className="section-home">
 
       <header className="header-tesco">
-        <img src="/tesco.jpg" alt="" className="img-tesco" />
+        <img src="tesco.jpg" alt="" className="img-tesco" />
         <div >
           <h1 className="header-tesco-h1">Tesco System</h1>
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, inventore amet est quod quos sequi quam placeat optio error, blanditiis perspiciatis, voluptate mollitia voluptatibus deserunt. Ea accusantium aliquam placeat iure.</p>
