@@ -1,13 +1,13 @@
-import { SignIn } from "../views/SignIn";
-import { SignUp } from "../views/SignUp";
-import { useState } from "react";
+import { Login } from "../formularios/Login"
+import { RegistrarUsuario } from "../formularios/RegistrarUsuario"
+import { useState } from "react"
 
 export function Sign() {
-  const [isRegistering, setIsRegistering] = useState(false);
+  const [isRegistering, setIsRegistering] = useState(false)
 
   return (
     !isRegistering
-      ? <SignIn setIsRegistering={setIsRegistering} />
-      : <SignUp setIsRegistering={setIsRegistering} />
-  );
+      ? <Login setIsRegistering={setIsRegistering} />
+      : <RegistrarUsuario setIsRegistering={setIsRegistering} />
+  )
 };

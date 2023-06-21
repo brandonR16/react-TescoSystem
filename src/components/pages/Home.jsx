@@ -1,12 +1,9 @@
-import { NavBarDesktop } from "../interface/NavBarDesktop";
-import { NavBarMobile } from '../interface/NavBarMobile';
-import { useEffect } from "react";
-import { Route, Routes } from 'react-router-dom';
-import { Inicio } from '../temp/Inicio';
-import { FormProducto } from '../temp/FormProducto';
+import { Route, Routes } from 'react-router-dom'
+import { Inicio } from '../views/Inicio'
+import { Producto } from '../formularios/Producto'
+import { Ticket } from '../views/Ticket'
 
 export function Home({ userMail }) {
-
   /*useEffect(() => {
     let viewPort = window.matchMedia("(max-width: 450px)");
     const desk = document.querySelector('.navBar-desktop');
@@ -27,8 +24,6 @@ export function Home({ userMail }) {
 
   return (
     <main className="page-home">
-      {/*<NavBarDesktop />
-      <NavBarMobile />*/}
       <Routes>
 
         <Route
@@ -37,9 +32,12 @@ export function Home({ userMail }) {
 
         <Route
           path="/react-TescoSystem/formulario"
-          element={<FormProducto />}></Route>
+          element={<Producto />}></Route>
 
+        <Route
+          path="/react-TescoSystem/formulario/ticket"
+          element={<Ticket userMail={userMail} />}></Route>
       </Routes>
     </main>
-  );
-};
+  )
+}

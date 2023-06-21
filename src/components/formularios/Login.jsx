@@ -1,32 +1,31 @@
-import BadCredentials from "../messages/BadCredentials";
-import { firebaseApp } from '../../credentials';
-import { useState } from "react";
-import { getAuth, signInWithEmailAndPassword, signInWithRedirect, GoogleAuthProvider } from 'firebase/auth';
-import { Link } from "react-router-dom";
+import BadCredentials from "../messages/BadCredentials"
+import { firebaseApp } from '../../credentials'
+import { useState } from "react"
+import { getAuth, signInWithEmailAndPassword, signInWithRedirect, GoogleAuthProvider } from 'firebase/auth'
 
-const auth = getAuth(firebaseApp);
-const googleProvider = new GoogleAuthProvider();
-
-export function SignIn({ setIsRegistering }) {
-  const [isWrong, setIsWrong] = useState(false);
+export function Login({ setIsRegistering }) {
+  const googleProvider = new GoogleAuthProvider()
+  const auth = getAuth(firebaseApp)
+  const [isWrong, setIsWrong] = useState(false)
 
   async function submitHandler(e) {
-    e.preventDefault();
+    e.preventDefault()
     try {
-      const m = e.target.inputMail.value;
-      const p = e.target.inputPassword.value;
-      await signInWithEmailAndPassword(auth, m, p);
+      const m = e.target.inputMail.value
+      const p = e.target.inputPassword.value
+      await signInWithEmailAndPassword(auth, m, p)
     } catch (e) {
-      setIsWrong(true);
+      setIsWrong(true)
       setTimeout(() => {
-        setIsWrong(false);
-      }, 4000);
+        setIsWrong(false)
+      }, 4000)
     }
   }
+
   const goRegister = (e) => {
-    e.preventDefault();
-    setIsRegistering(true);
-  };
+    e.preventDefault()
+    setIsRegistering(true)
+  }
 
   return (
     <section className="container-login">
@@ -68,5 +67,5 @@ export function SignIn({ setIsRegistering }) {
         <button onClick={goRegister} className="login-buttonGoRegister" id="lbgr">Registrate</button>
       </form>
     </section >
-  );
+  )
 };

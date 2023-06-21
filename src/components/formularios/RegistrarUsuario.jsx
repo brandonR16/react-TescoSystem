@@ -1,78 +1,75 @@
-import reviewRegister from "../../functions/review-userRegistration";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import { firebaseApp } from '../../credentials';
-import { IconText, IconAt, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/IconsSignUp';
-import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore";
-import Review from "../../functions/Review";
+import reviewRegister from "../../functions/review-userRegistration"
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+import { firebaseApp } from '../../credentials'
+import { IconText, IconAt, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/IconsSignUp'
+import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore"
+import Review from "../../functions/Review"
 
-export function SignUp({ setIsRegistering }) {
-  const classReview = new Review();
-  const auth = getAuth(firebaseApp);
-  const firestore = getFirestore(firebaseApp);
+export function RegistrarUsuario({ setIsRegistering }) {
+  const classReview = new Review()
+  const auth = getAuth(firebaseApp)
+  const firestore = getFirestore(firebaseApp)
 
-  function upperCaseName(str) {
+  /*function upperCaseName(str) {
     // pablo  mario   gonzaleZ CAMARENA  
     // Pablo Mario Gonzalez Camarena 
-    const stageOne = str.trim().toLowerCase().split(' ').filter(n => n !== '');
-    return stageOne.map(n => n[0].toUpperCase() + n.slice(1)).join(' ');
-  }
+    const stageOne = str.trim().toLowerCase().split(' ').filter(n => n !== '')
+    return stageOne.map(n => n[0].toUpperCase() + n.slice(1)).join(' ')
+  }*/
 
   async function addUser(e) {
-    e.preventDefault();
-    reviewRegister();
-    const name = e.target.sufn.value;
-    const nameFixed = upperCaseName(name);
-    const mail = e.target.inputMail.value;
-    const password = e.target.inputPassword.value;
+    e.preventDefault()
+    // reviewRegister()
+    const nombre = e.target.inputName.value
+    // const nameFixed = upperCaseName(nombre)
+    const mail = e.target.inputMail.value
+    const password = e.target.inputPassword.value
     const dataUser = [
       {
-        name: nameFixed,
         mail: mail,
+        nombre: nombre,
         pass: password,
       },
-    ];
-    const docRef = doc(firestore, `users/${mail}`);
-    const query = await getDoc(docRef);
+    ]
+    const docRef = doc(firestore, `users/${mail}`)
+    const query = await getDoc(docRef)
 
     if (!query.exists()) {
-      await setDoc(docRef, { data: [...dataUser] });
-      if (reviewRegister()) await createUserWithEmailAndPassword(auth, mail, password);
+      await setDoc(docRef, { data: [...dataUser] })
+      await createUserWithEmailAndPassword(auth, mail, password)
     } else {
-      return;
+      return
     }
   }
 
   function resetBorders() {
-    const root = document.querySelector(':root');
-    root.style.setProperty('--borderFieldName', '#c5c5c5');
-    root.style.setProperty('--borderFieldID', '#c5c5c5');
-    root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5');
+    const root = document.querySelector(':root')
+    root.style.setProperty('--borderFieldName', '#c5c5c5')
+    root.style.setProperty('--borderFieldID', '#c5c5c5')
+    root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5')
   };
 
   function goSignIn() {
-    resetBorders();
-    setIsRegistering(false);
+    resetBorders()
+    setIsRegistering(false)
   };
 
   return (
     <section className="container-signUp">
-      <form className="signUpForm" onSubmit={(e) => { if (classReview._reviewFormSignUp(e)) addUser(e); }}>
+      <form className="signUpForm" onSubmit={(e) => { addUser(e) }}>
         <h1 className="signUpForm-title">Registrate <span className="gradient"></span></h1>
 
-        <label className="signUpForm-label" htmlFor="sufn">
+        <label className="signUpForm-label" htmlFor="inputName">
           Nombre
-
         </label>
         <input
-          id="sufn"
+          id="inputName"
           className="signUpForm-name"
-          placeholder="Ingresa tu nombre y apellidos"
-          autoComplete="new-password"
-          ////onFocus={() => classReview._inputNameFocusIn()}
-          ////onBlur={() => classReview._inputNameBlur()}
-          onKeyUp={() => classReview._inputNameKeyUp()}
+          placeholder="Nombre y apellidos"
+        // autoComplete="new-password"
+        // onKeyUp={() => classReview._inputNameKeyUp()}
         />
-        <p className="signUpForm-name-p"> </p>
+        <p className="signUpForm-name-p"></p>
 
         <label className="signUpForm-label" htmlFor="inputMail">
           Correo Insitucional
@@ -81,10 +78,6 @@ export function SignUp({ setIsRegistering }) {
           id="inputMail"
           className="signUpForm-mail"
           placeholder="usuario@dominio.com"
-          autoComplete="new-password"
-        //onFocus={() => classReview._inputMailFocusIn()}
-        //onBlur={() => classReview._inputMailBlur()}
-        // onChangeCapture={() => document.querySelector('.signUpForm-mail-p').textContent = ''}
         />
         <p className="signUpForm-mail-p"></p>
 
@@ -97,8 +90,6 @@ export function SignUp({ setIsRegistering }) {
           className="signUpForm-name"
           placeholder="Numero de tu matricula"
           autoComplete="new-password"
-          //onFocus={() => classReview._inputNameFocusIn()}
-          //onBlur={() => classReview._inputNameBlur()}
           onKeyUp={() => classReview._inputNameKeyUp()}
         />
         <p className="signUpForm-name-p"> </p>
@@ -112,8 +103,6 @@ export function SignUp({ setIsRegistering }) {
             type="password"
             autoComplete="new-password"
             placeholder="Crea una contraseña"
-          //onBlur={() => classReview._inputPassBlur()}
-          //onFocus={() => classReview._inputPassFocusIn()}
           />
           <button onClick={() => classReview._showPassRegister()} className="btn-showPass" type="button" title="button show">
             <IconShow />
@@ -131,8 +120,6 @@ export function SignUp({ setIsRegistering }) {
             autoComplete="new-password"
             placeholder="Repite la contraseña"
             onKeyUp={() => classReview._inputConfirmPassKeyUp()}
-          //onFocus={() => classReview._inputConfirmPassFocusIn()}
-          //onBlur={() => classReview._inputConfirmPassBlur()}
           />
           <button onClick={() => classReview._showConfirmRegister()} className="btn-showPassConfirm" type="button" title="button show">
             <IconShowConfirm />
@@ -149,5 +136,5 @@ export function SignUp({ setIsRegistering }) {
         <button id="sufbsi" className="signUpForm-btnGoSignIn" onClick={goSignIn}> Inicia Sesión</button>
       </form>
     </section>
-  );
+  )
 };
