@@ -972,9 +972,15 @@ input:not(:placeholder-shown)~.finder-btnClose {
 }
 
 .header-tesco {
-  display: flex;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 20% 80%;
   align-items: center;
   justify-items: center;
+}
+
+.header-tesco-texto {
+  justify-self: flex-start;
 }
 
 .header-tesco-h1 {
@@ -983,9 +989,14 @@ input:not(:placeholder-shown)~.finder-btnClose {
   font-weight: 800;
 }
 
+.header-tesco-p {
+  line-height: 1.5;
+}
+
 .img-tesco {
+  width: 9rem;
   height: 9rem;
-  padding: 1rem;
+  /*padding: 1rem;*/
 }
 
 .main-deportivos {
@@ -1048,7 +1059,7 @@ input:not(:placeholder-shown)~.finder-btnClose {
   font-size: 17px;
   font-weight: 500;
   border-radius: 10px;
-  border: none;
+  border: 2px solid var(--mainColor);
   outline: none;
   color: var(--mainColor);
   background-color: #f2f2f7;
@@ -1158,4 +1169,12 @@ input:not(:placeholder-shown)~.finder-btnClose {
 .ticket-headings {
   font-weight: 800;
   margin-top: 1.4rem;
+}
+
+@media (max-width: 664px) {
+  .header-tesco {
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+  }
 }

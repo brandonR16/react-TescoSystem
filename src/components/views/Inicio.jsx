@@ -12,9 +12,9 @@ export function Inicio() {
 
       <header className="header-tesco">
         <img src="tesco.jpg" alt="" className="img-tesco" />
-        <div >
+        <div className="header-tesco-texto" >
           <h1 className="header-tesco-h1">Tesco System</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, inventore amet est quod quos sequi quam placeat optio error, blanditiis perspiciatis, voluptate mollitia voluptatibus deserunt. Ea accusantium aliquam placeat iure.</p>
+          <p className="header-tesco-p">Sistema de prestamos para articulos deportivos para la interaccion fisica entre alumnos del instituto TESCO y asi promover el deporte de una manera ms sencilla y comoda. </p>
         </div>
       </header>
 
