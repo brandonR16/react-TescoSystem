@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 import { Inicio } from '../views/Inicio'
 import { Producto } from '../formularios/Producto'
 import { Ticket } from '../views/Ticket'
+import { FichaDatos } from "../views/FichaDatos"
 
 export function Home({ userMail }) {
   /*useEffect(() => {
@@ -29,6 +30,10 @@ export function Home({ userMail }) {
         <Route
           path="/react-TescoSystem//*"
           element={<Inicio />}></Route>
+
+        <Route
+          path="/react-TescoSystem/usuario"
+          element={<FichaDatos userMail={userMail} />}></Route>
 
         <Route
           path="/react-TescoSystem/formulario"

@@ -11,8 +11,8 @@ class Review {
   }
 
   _inputNameKeyUp() {
-    const inputName = document.querySelector('.signUpForm-name')
-    const textErrorName = document.querySelector('.signUpForm-name-p')
+    const inputName = document.querySelector('.signUp-nombre')
+    const textErrorName = document.querySelector('.signUp-nombre-p')
 
     for (let i = 0; i < inputName.value.length; i++) {
       this.root.setProperty('--borderFieldName', '#3b59d4')
@@ -32,8 +32,8 @@ class Review {
   };
 
   _reviewInputName() {
-    const inputName = document.querySelector('.signUpForm-name')
-    const textErrorName = document.querySelector('.signUpForm-name-p')
+    const inputName = document.querySelector('.signUp-nombre')
+    const textErrorName = document.querySelector('.signUp-nombre-p')
 
     if (inputName.value === '') {
       this.root.setProperty('--borderFieldName', '#f63737')
@@ -56,8 +56,8 @@ class Review {
   }
 
   _reviewInputMail() {
-    const inputMail = document.querySelector('.signUpForm-mail')
-    const labelErrorMail = document.querySelector('.signUpForm-mail-p')
+    const inputMail = document.querySelector('.signUp-correo')
+    const labelErrorMail = document.querySelector('.signUp-correo-p')
 
     if (inputMail.value === '') {
       this.root.setProperty('--borderFieldID', '#f63737')
@@ -80,8 +80,8 @@ class Review {
     this.root.setProperty('--borderFieldNumber', '#c5c5c5')
   }
   _inputNumberKeyUp() {
-    const inputNumber = document.querySelector('.signUpForm-number')
-    const labelErrorNumber = document.querySelector('.signUpForm-number-p')
+    const inputNumber = document.querySelector('.signUp-matricula')
+    const labelErrorNumber = document.querySelector('.signUp-matricula-p')
 
     for (let i = 0; i < inputNumber.value.length; i++) {
       this.root.setProperty('--borderFieldNumber', '#3b59d4')
@@ -100,8 +100,8 @@ class Review {
   };
 
   _reviewInputNumber() {
-    const inputNumber = document.querySelector('.signUpForm-number')
-    const labelErrorNumber = document.querySelector('.signUpForm-number-p')
+    const inputNumber = document.querySelector('.signUp-matricula')
+    const labelErrorNumber = document.querySelector('.signUp-matricula-p')
 
     if (inputNumber.value === '') {
       this.root.setProperty('--borderFieldNumber', '#f63737')
@@ -140,8 +140,8 @@ class Review {
   }
 
   _reviewInputPass() {
-    const inputPass = document.querySelector('.signUpForm-pass')
-    const labelErrorPass = document.querySelector('.signUpForm-pass-p')
+    const inputPass = document.querySelector('.signUp-pass')
+    const labelErrorPass = document.querySelector('.signUp-pass-p')
 
     if (inputPass.value === '') {
       this.root.setProperty('--borderFieldPass', '#f63737')
@@ -156,7 +156,7 @@ class Review {
   }
 
   _showPassRegister() {
-    const inputPass = document.querySelector('.signUpForm-pass')
+    const inputPass = document.querySelector('.signUp-pass')
     const iconHidePass = document.querySelector('.btn-hidePass-svg')
     const iconShowPass = document.querySelector('.btn-showPass-svg')
 
@@ -180,9 +180,9 @@ class Review {
   }
 
   _inputConfirmPassKeyUp() {
-    const inputPass = document.querySelector('.signUpForm-pass')
-    const inputPassConfirm = document.querySelector('.signUpForm-passConfirm')
-    const textErrorPassConfirm = document.querySelector('.signUpForm-passConfirm-p')
+    const inputPass = document.querySelector('.signUp-pass')
+    const inputPassConfirm = document.querySelector('.signUp-passConfirm')
+    const textErrorPassConfirm = document.querySelector('.signUp-passConfirm-p')
 
     if (inputPassConfirm.value === inputPass.value) {
       this.root.setProperty('--borderFieldPassConfirm', '#3b59d4')
@@ -197,9 +197,9 @@ class Review {
   };
 
   _reviewInputConfirmPassword() {
-    const inputPass = document.querySelector('.signUpForm-pass')
-    const inputPassConfirm = document.querySelector('.signUpForm-passConfirm')
-    const textErrorPassConfirm = document.querySelector('.signUpForm-passConfirm-p')
+    const inputPass = document.querySelector('.signUp-pass')
+    const inputPassConfirm = document.querySelector('.signUp-passConfirm')
+    const textErrorPassConfirm = document.querySelector('.signUp-passConfirm-p')
 
     if (inputPass.value !== inputPassConfirm.value) {
       this.root.setProperty('--borderFieldPassConfirm', '#f63737')
@@ -211,7 +211,7 @@ class Review {
   }
 
   _showConfirmRegister() {
-    const inputPassConfirm = document.querySelector('.signUpForm-passConfirm')
+    const inputPassConfirm = document.querySelector('.signUp-passConfirm')
     const iconShowPassConfirm = document.querySelector('.btn-showPassConfirm-svg')
     const iconHidePassConfirm = document.querySelector('.btn-hidePassConfirm-svg')
 
@@ -261,8 +261,8 @@ const inputNameFocusIn = () => root.style.setProperty('--borderFieldName', '#3b5
 const inputNameBlur = () => root.style.setProperty('--borderFieldName', '#c5c5c5');
 const inputNameKeyUp = () => {
   let root = document.querySelector(':root');
-  const inputName = document.querySelector('.signUpForm-name');
-  const textErrorName = document.querySelector('.signUpForm-name-p');
+  const inputName = document.querySelector('.signUp-nombre');
+  const textErrorName = document.querySelector('.signUp-nombre-p');
 
   for (let i = 0; i < inputName.value.length; i++) {
     root.style.setProperty('--borderFieldName', '#2e466f');
@@ -299,7 +299,7 @@ const inputModelCarBlur = () => root.style.setProperty('--borderFieldModel', '#c
 const inputPassFocusIn = () => root.style.setProperty('--borderFieldPass', '#3b59d4');
 const inputPassBlur = () => root.style.setProperty('--borderFieldPass', '#c5c5c5');
 const showPassRegister = () => {
-  const inputPass = document.querySelector('.signUpForm-pass');
+  const inputPass = document.querySelector('.signUp-pass');
   //const btnShowPass = document.querySelector('.btn-showPass');
   const iconHidePass = document.querySelector('.btn-hidePass-svg');
   const iconShowPass = document.querySelector('.btn-showPass-svg');
@@ -320,9 +320,9 @@ const inputConfirmPassFocusIn = () => root.style.setProperty('--borderFieldPassC
 const inputConfirmPassBlur = () => root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5');
 
 const inputConfirmPassKeyUp = () => {
-  const inputPass = document.querySelector('.signUpForm-pass');
-  const inputPassConfirm = document.querySelector('.signUpForm-passConfirm');
-  const textErrorPassConfirm = document.querySelector('.signUpForm-passConfirm-p');
+  const inputPass = document.querySelector('.signUp-pass');
+  const inputPassConfirm = document.querySelector('.signUp-passConfirm');
+  const textErrorPassConfirm = document.querySelector('.signUp-passConfirm-p');
 
   if (inputPassConfirm.value === inputPass.value) {
     textErrorPassConfirm.textContent = '';
@@ -333,7 +333,7 @@ const inputConfirmPassKeyUp = () => {
   }
 };
 const showConfirmRegister = () => {
-  const inputPassConfirm = document.querySelector('.signUpForm-passConfirm');
+  const inputPassConfirm = document.querySelector('.signUp-passConfirm');
   const iconShowPassConfirm = document.querySelector('.btn-showPassConfirm-svg');
   const iconHidePassConfirm = document.querySelector('.btn-hidePassConfirm-svg');
 
@@ -359,8 +359,8 @@ const inputNameFocusIn = () => root.style.setProperty('--borderFieldName', '#3b5
 const inputNameBlur = () => root.style.setProperty('--borderFieldName', '#c5c5c5');
 const inputNameKeyUp = () => {
   let root = document.querySelector(':root');
-  const inputName = document.querySelector('.signUpForm-name');
-  const textErrorName = document.querySelector('.signUpForm-name-p');
+  const inputName = document.querySelector('.signUp-nombre');
+  const textErrorName = document.querySelector('.signUp-nombre-p');
 
   for (let i = 0; i < inputName.value.length; i++) {
     root.style.setProperty('--borderFieldName', '#2e466f');
@@ -397,7 +397,7 @@ const inputModelCarBlur = () => root.style.setProperty('--borderFieldModel', '#c
 const inputPassFocusIn = () => root.style.setProperty('--borderFieldPass', '#3b59d4');
 const inputPassBlur = () => root.style.setProperty('--borderFieldPass', '#c5c5c5');
 const showPassRegister = () => {
-  const inputPass = document.querySelector('.signUpForm-pass');
+  const inputPass = document.querySelector('.signUp-pass');
   //const btnShowPass = document.querySelector('.btn-showPass');
   const iconHidePass = document.querySelector('.btn-hidePass-svg');
   const iconShowPass = document.querySelector('.btn-showPass-svg');
@@ -418,9 +418,9 @@ const inputConfirmPassFocusIn = () => root.style.setProperty('--borderFieldPassC
 const inputConfirmPassBlur = () => root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5');
 
 const inputConfirmPassKeyUp = () => {
-  const inputPass = document.querySelector('.signUpForm-pass');
-  const inputPassConfirm = document.querySelector('.signUpForm-passConfirm');
-  const textErrorPassConfirm = document.querySelector('.signUpForm-passConfirm-p');
+  const inputPass = document.querySelector('.signUp-pass');
+  const inputPassConfirm = document.querySelector('.signUp-passConfirm');
+  const textErrorPassConfirm = document.querySelector('.signUp-passConfirm-p');
 
   if (inputPassConfirm.value === inputPass.value) {
     textErrorPassConfirm.textContent = '';
@@ -431,7 +431,7 @@ const inputConfirmPassKeyUp = () => {
   }
 };
 const showConfirmRegister = () => {
-  const inputPassConfirm = document.querySelector('.signUpForm-passConfirm');
+  const inputPassConfirm = document.querySelector('.signUp-passConfirm');
   const iconShowPassConfirm = document.querySelector('.btn-showPassConfirm-svg');
   const iconHidePassConfirm = document.querySelector('.btn-hidePassConfirm-svg');
 

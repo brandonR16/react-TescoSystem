@@ -2,9 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
+  /* Colores principales */
   --mainColor: #0b924e;
-  --mainColor-tint: #5573ed;
-  --mainColor-shade: #3b59d4;
+  --mainColor-tint: #77b094;
+  --mainColor-shade: #0d894b;
+
+  /* Colores secundarios */
   --ff: #fff;
   --black18: #181818;
 
@@ -22,6 +25,15 @@
   --borderFieldModel: #c5c5c5;
   --borderFieldPass: #c5c5c5;
   --borderFieldPassConfirm: #c5c5c5;
+
+  --border-input-fecha: #c5c5c5;
+  --border-input-dia: #c5c5c5;
+
+  --borderInput-nombre: #c5c5c5;
+  --borderInput-correo: #c5c5c5;
+  --borderInput-matricula: #c5c5c5;
+  --borderInput-pass: #c5c5c5;
+  --borderInput-passConfirm: #c5c5c5;
 
   --shadow-finder: 0px 20px 18px -18px rgba(0, 0, 0, 0.12);
 }
@@ -248,37 +260,73 @@ input {
 }
 
 
+
 .signUpForm-labelSVG {
   width: 18px;
   justify-self: center;
   color: var(--mainColor);
 }
 
-.signUpForm-name,
-.signUpForm-mail,
-.signUpForm-IDCar,
-.signUpForm-number,
-.signUpForm-modelCar,
-.signUpForm-pass,
-.signUpForm-passConfirm {
+.signUp-nombre,
+.signUp-correo,
+.signUp-matricula,
+.signUp-pass,
+.signUp-passConfirm {
   min-height: 36px;
   width: 78%;
   margin-top: 4px;
-  padding: 10px 10px;
-  border-radius: 50px;
+  padding: 0 8px;
   font-size: 16px;
   font-weight: 400;
-  border: 2px solid var(--mainColor);
+  border: none;
+  /* border-radius: 50px; */
+  /* border: 2px solid var(--mainColor); */
   background: none;
   outline: none;
   background-color: white;
 }
 
-.signUpForm-name-p,
-.signUpForm-number-p,
-.signUpForm-mail-p,
-.signUpForm-pass-p,
-.signUpForm-passConfirm-p {
+.signUp-nombre {
+  border-bottom: 2px solid var(--borderInput-nombre);
+}
+
+.signUp-correo {
+  border-bottom: 2px solid var(--borderInput-correo);
+}
+
+.signUp-matricula {
+  border-bottom: 2px solid var(--borderInput-matricula);
+}
+
+.signUp-pass {
+  border-bottom: 2px solid var(--borderInput-pass);
+}
+
+.signUp-passConfirm {
+  border-bottom: 2px solid var(--borderInput-passConfirm);
+}
+
+.wrapper-inputMail {
+  width: 78% !important;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.signUp-correo {
+  width: 100%;
+  margin-top: 0;
+  padding: 0;
+  padding-right: 2px;
+}
+
+.signUp-nombre-p,
+.signUp-matricula-p,
+.signUp-correo-p,
+.signUp-pass-p,
+.signUp-passConfirm-p {
   height: 12px;
   width: 78%;
   margin-top: 2px;
@@ -287,8 +335,8 @@ input {
   color: #f63737;
 }
 
-.signUpForm-pass,
-.signUpForm-passConfirm {
+.signUp-pass,
+.signUp-passConfirm {
   width: 100%;
 }
 
@@ -1036,7 +1084,7 @@ input:not(:placeholder-shown)~.finder-btnClose {
 .articulo-descripcion {}
 
 .articulo-disponibles {
-  margin-top: 1.2rem;
+  margin: .6rem;
   font-weight: 600;
 }
 
@@ -1052,25 +1100,100 @@ input:not(:placeholder-shown)~.finder-btnClose {
   background-color: var(--mainColor);
 }
 
-.btn-signOut {
+.btn-signOut,
+.btn-borrarCuenta,
+.btn-consultarInformacion {
   width: 18rem;
   height: 48px;
-  margin-top: 3rem;
+  margin-top: 18px;
   font-size: 17px;
   font-weight: 500;
   border-radius: 10px;
-  border: 2px solid var(--mainColor);
+  border: none;
+  border-bottom: 2px solid var(--mainColor);
   outline: none;
   color: var(--mainColor);
   background-color: #f2f2f7;
 }
 
-.btn-signOut:hover {
+.btn-borrarCuenta {
+  border: none;
+  margin-top: 18px;
+  color: white;
+  background-color: #ff4949;
+}
+
+.btn-consultarInformacion {
+  border: none;
+  margin-top: 3rem;
+  color: white;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--mainColor-shade);
+}
+
+.btn-signOut:hover,
+.borrarCuenta:hover {
   cursor: pointer;
+}
+
+/* BorrandoCuenta.jsx */
+.mensaje-borrandoCuenta {
+  height: 50px;
+  width: 15rem;
+  display: grid;
+  justify-items: center;
+  border-radius: 10px;
+  align-items: center;
+  grid-template-columns: 25% 1fr;
+  position: fixed;
+  top: 20px;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 4px 18px 18px rgba(0, 0, 0, 0.08);
+}
+
+.mensaje-borrandoCuenta p {
+  justify-self: flex-start;
+}
+
+.mensaje-borrandoCuenta svg {
+  height: 24px;
+  color: red;
 }
 
 
 
+/* FichaDatos.jsx */
+.container-fichaDatos {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fichaDatos {
+  height: 19rem;
+  width: 20rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px dashed #0b924e;
+}
+
+.fichaDatos h3 {
+  margin-top: 1rem;
+  color: #0b924e;
+  font-weight: 600;
+}
+
+.fichaDatos p {
+  margin-top: 3px;
+  font-size: 17px;
+}
 
 /* Producto.jsx */
 .contenedor-formulario {
@@ -1091,11 +1214,6 @@ input:not(:placeholder-shown)~.finder-btnClose {
   height: 12rem;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-}
-
-:root {
-  --border-input-fecha: #c5c5c5;
-  --border-input-dia: #c5c5c5;
 }
 
 .formulario-inputs {

@@ -4,8 +4,10 @@ import { firebaseApp } from '../../credentials'
 import { IconText, IconAt, IconHide, IconShow, IconHideConfirm, IconShowConfirm } from '../svg/IconsSignUp'
 import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore"
 import Review from "../../functions/Review"
+import { ClReviewSignUp } from "../../classes/cl-signUp"
 
 export function RegistrarUsuario({ setIsRegistering }) {
+  const cl = new ClReviewSignUp()
   const classReview = new Review()
   const auth = getAuth(firebaseApp)
   const firestore = getFirestore(firebaseApp)
@@ -22,12 +24,14 @@ export function RegistrarUsuario({ setIsRegistering }) {
     // reviewRegister()
     const nombre = e.target.inputName.value
     // const nameFixed = upperCaseName(nombre)
-    const mail = e.target.inputMail.value
+    const mail = e.target.inputMail.value + '@tesco.edu.mx'
     const password = e.target.inputPassword.value
+    const matricula = e.target.sufn.value
     const dataUser = [
       {
         mail: mail,
         nombre: nombre,
+        matricula: matricula,
         pass: password,
       },
     ]
@@ -37,20 +41,10 @@ export function RegistrarUsuario({ setIsRegistering }) {
     if (!query.exists()) {
       await setDoc(docRef, { data: [...dataUser] })
       await createUserWithEmailAndPassword(auth, mail, password)
-    } else {
-      return
-    }
+    } else return
   }
 
-  function resetBorders() {
-    const root = document.querySelector(':root')
-    root.style.setProperty('--borderFieldName', '#c5c5c5')
-    root.style.setProperty('--borderFieldID', '#c5c5c5')
-    root.style.setProperty('--borderFieldPassConfirm', '#c5c5c5')
-  };
-
   function goSignIn() {
-    resetBorders()
     setIsRegistering(false)
   };
 
@@ -59,66 +53,83 @@ export function RegistrarUsuario({ setIsRegistering }) {
       <form className="signUpForm" onSubmit={(e) => { addUser(e) }}>
         <h1 className="signUpForm-title">Registrate <span className="gradient"></span></h1>
 
+        {/*///////////////////////////////////////////////////*/}
         <label className="signUpForm-label" htmlFor="inputName">
           Nombre
         </label>
         <input
           id="inputName"
-          className="signUpForm-name"
+          className="signUp-nombre"
           placeholder="Nombre y apellidos"
-        // autoComplete="new-password"
-        // onKeyUp={() => classReview._inputNameKeyUp()}
+          autoComplete="new-password"
+          onFocus={() => cl._inputFocusIn('nombre')}
+          onBlur={() => cl._inputBlur('nombre')}
+          onKeyUp={() => cl._inputNameKeyUp()}
         />
-        <p className="signUpForm-name-p"></p>
-
+        <p className="signUp-nombre-p"></p>
+        {/*///////////////////////////////////////////////////*/}
         <label className="signUpForm-label" htmlFor="inputMail">
           Correo Insitucional
         </label>
-        <input
-          id="inputMail"
-          className="signUpForm-mail"
-          placeholder="usuario@dominio.com"
-        />
-        <p className="signUpForm-mail-p"></p>
-
-
+        <div className="wrapper-inputMail">
+          <input
+            id="inputMail"
+            className="signUp-correo"
+            placeholder="brandon.sic"
+            onFocus={() => cl._inputFocusIn('correo')}
+            onBlur={() => cl._inputBlur('correo')}
+            onKeyUp={() => cl._inputCorreoKeyUp()}
+          />
+          <p>@tesco.edu.mx</p>
+        </div>
+        <p className="signUp-correo-p"></p>
+        {/*///////////////////////////////////////////////////*/}
         <label className="signUpForm-label" htmlFor="sufn">
           Matricula
         </label>
         <input
           id="sufn"
-          className="signUpForm-name"
+          className="signUp-matricula"
           placeholder="Numero de tu matricula"
           autoComplete="new-password"
+          type="number"
+          pattern="[0-9]*"
+          inputMode="numeric"
+          onFocus={() => cl._inputFocusIn('matricula')}
+          onBlur={() => cl._inputBlur('matricula')}
           onKeyUp={() => classReview._inputNameKeyUp()}
         />
-        <p className="signUpForm-name-p"> </p>
-
-
+        <p className="signUp-matricula-p"> </p>
+        {/*///////////////////////////////////////////////////*/}
         <label className="signUpForm-label" htmlFor="inputPassword">Contraseña</label>
         <section className="wrapper-password">
           <input
             id="inputPassword"
-            className="signUpForm-pass"
+            className="signUp-pass"
             type="password"
             autoComplete="new-password"
             placeholder="Crea una contraseña"
+            onFocus={() => cl._inputFocusIn('pass')}
+            onBlur={() => cl._inputBlur('pass')}
+            onChangeCapture={() => cl._inputPass()}
           />
           <button onClick={() => classReview._showPassRegister()} className="btn-showPass" type="button" title="button show">
             <IconShow />
             <IconHide />
           </button>
         </section>
-        <p className="signUpForm-pass-p"></p>
-
+        <p className="signUp-pass-p"></p>
+        {/*///////////////////////////////////////////////////*/}
         <label className="signUpForm-label" htmlFor="sufcp">Confirmar contraseña</label>
         <div className="wrapper-password">
           <input
             id="sufcp"
-            className="signUpForm-passConfirm"
+            className="signUp-passConfirm"
             type="password"
             autoComplete="new-password"
             placeholder="Repite la contraseña"
+            onFocus={() => cl._inputFocusIn('passConfirm')}
+            onBlur={() => cl._inputBlur('passConfirm')}
             onKeyUp={() => classReview._inputConfirmPassKeyUp()}
           />
           <button onClick={() => classReview._showConfirmRegister()} className="btn-showPassConfirm" type="button" title="button show">
@@ -126,8 +137,8 @@ export function RegistrarUsuario({ setIsRegistering }) {
             <IconHideConfirm />
           </button>
         </div>
-        <p className="signUpForm-passConfirm-p"></p>
-
+        <p className="signUp-passConfirm-p"></p>
+        {/*///////////////////////////////////////////////////*/}
         <button
           type="submit"
           className="signUpForm-btnRegister"
