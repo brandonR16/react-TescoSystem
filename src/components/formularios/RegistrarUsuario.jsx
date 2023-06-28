@@ -21,7 +21,6 @@ export function RegistrarUsuario({ setIsRegistering }) {
 
   async function addUser(e) {
     e.preventDefault()
-    // reviewRegister()
     const nombre = e.target.inputName.value
     // const nameFixed = upperCaseName(nombre)
     const mail = e.target.inputMail.value + '@tesco.edu.mx'
@@ -51,7 +50,7 @@ export function RegistrarUsuario({ setIsRegistering }) {
   return (
     <section className="container-signUp">
       <form className="signUpForm" onSubmit={(e) => { addUser(e) }}>
-        <h1 className="signUpForm-title">Registrate <span className="gradient"></span></h1>
+        <h1 className="signUpForm-title">Registrate</h1>
 
         {/*///////////////////////////////////////////////////*/}
         <label className="signUpForm-label" htmlFor="inputName">

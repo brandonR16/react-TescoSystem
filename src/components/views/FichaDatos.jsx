@@ -14,7 +14,6 @@ export const FichaDatos = ({ userMail }) => {
     if (query.exists()) {
       const infoDoc = query.data()
       const [datosFirebase] = infoDoc.data
-      console.log(datosFirebase)
       asignarCambioLaInfo(true)
       asignarDatosUsuario(datosFirebase)
     }
