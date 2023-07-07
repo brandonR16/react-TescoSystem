@@ -40,10 +40,16 @@ export function Inicio() {
       })
     }</main>
 
+
     <Link
       className="btn-consultarInformacion"
       to='/react-TescoSystem/usuario'
     >Consultar Mi Información</Link>
+
+    <Link
+      className="btn-agregarComentario"
+      to='/react-TescoSystem/comentario'
+    >Dejar un Comentario</Link>
 
     <button
       className="btn-signOut"

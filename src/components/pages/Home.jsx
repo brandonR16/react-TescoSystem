@@ -3,6 +3,8 @@ import { Inicio } from '../views/Inicio'
 import { Producto } from '../formularios/Producto'
 import { Ticket } from '../views/Ticket'
 import { FichaDatos } from "../views/FichaDatos"
+import { Comentario } from "../views/Comentario"
+
 
 export function Home({ userMail }) {
   return <main className="page-home">
@@ -15,6 +17,10 @@ export function Home({ userMail }) {
       <Route
         path="/react-TescoSystem/usuario"
         element={<FichaDatos userMail={userMail} />}></Route>
+
+      <Route
+        path="/react-TescoSystem/comentario"
+        element={<Comentario userMail={userMail} />}></Route>
 
       <Route
         path="/react-TescoSystem/formulario"

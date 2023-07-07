@@ -486,7 +486,8 @@ input {
 
 .btn-signOut,
 .btn-borrarCuenta,
-.btn-consultarInformacion {
+.btn-consultarInformacion,
+.btn-agregarComentario {
   width: 18rem;
   height: 48px;
   margin-top: 18px;
@@ -507,7 +508,8 @@ input {
   background-color: #ff4949;
 }
 
-.btn-consultarInformacion {
+.btn-consultarInformacion,
+.btn-agregarComentario {
   border: none;
   margin-top: 3rem;
   color: white;
@@ -516,6 +518,10 @@ input {
   justify-content: center;
   align-items: center;
   background-color: var(--mainColor-shade);
+}
+
+.btn-agregarComentario {
+  margin-top: 1rem;
 }
 
 .btn-signOut:hover,
@@ -679,4 +685,45 @@ input {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
   }
+}
+
+/* Comentario.jsx */
+.container-comentario {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.comentario-h1 {
+  font-size: 2.3rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.comentario-input {
+  width: 20rem;
+  margin-top: 1rem;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-size: 18px;
+  outline: none;
+  font-weight: 500;
+  border: #c5c5c5 3px solid;
+}
+
+.comentario-input:focus {
+  border: #0b924e 3px solid;
+}
+
+.comentario-btn {
+  height: 48px;
+  width: 20rem;
+  margin-top: 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #dbffa6;
 }
